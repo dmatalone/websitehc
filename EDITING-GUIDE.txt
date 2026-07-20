@@ -1,0 +1,39 @@
+HOLLYWOOD CINEMA WEBSITE V6 — FLAT GITHUB VERSION
+==================================================
+
+This version has NO page folders.
+
+Upload every file in this folder directly into the main area of your GitHub repository.
+
+Main files:
+- index.html
+- shop.html
+- events.html
+- archived-events.html
+- nfl.html
+- throwback-thursday.html
+- fun-night.html
+- menu.html
+- smoothies.html
+- mystery-candy-box.html
+- mystery-movie-box.html
+- star-pass.html
+- popcorn-chatbot.html
+- privacy-policy.html
+- terms-of-service.html
+- trademark-information.html
+- style.css
+- script.js
+- favicon files
+- logo file
+
+IMPORTANT
+GitHub Pages supports folders, but this flat version is easier to upload and edit.
+
+URLs will normally include .html, for example:
+- yoursite.com/events.html
+- yoursite.com/shop.html
+- yoursite.com/menu.html
+
+The homepage will simply be:
+- yoursite.com/

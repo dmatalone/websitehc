@@ -2,11 +2,635 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff"><meta name="description" content="Revisit unforgettable films with select Throwback Thursday presentations at Hollywood Cinema.">
-<title>Throwback Thursday | Hollywood Cinema</title><link rel="stylesheet" href="style.css">
+<title>Throwback Thursday | Hollywood Cinema</title><style>
 
-<link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
-<link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+:root{
+  --white:#fff;--black:#0b0b0c;--soft:#171719;--gray:#67676c;
+  --light:#f5f5f6;--line:#e7e7e9;--gold:#d4af37;--gold2:#f0d36f;
+  --radius:24px;--shadow:0 20px 60px rgba(0,0,0,.10);--max:1200px
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#fff;color:var(--black);line-height:1.55}
+body.menu-open{overflow:hidden}
+a{color:inherit;text-decoration:none}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+img{max-width:100%;display:block}
+.container{width:min(calc(100% - 40px),var(--max));margin:auto}
+.banner{position:relative;z-index:1002;background:#0b0b0c;color:#fff}
+.banner-inner{min-height:48px;display:flex;align-items:center;justify-content:center;gap:18px;padding:10px 54px 10px 18px;text-align:center;font-size:.9rem;font-weight:750}
+.banner a{color:var(--gold2);text-decoration:underline;text-underline-offset:3px}
+.banner-close{position:absolute;right:15px;top:50%;transform:translateY(-50%);border:0;width:32px;height:32px;border-radius:50%;background:#ffffff1d;color:#fff;font-size:1.1rem}
+.header{position:sticky;top:0;z-index:1000;background:#ffffffeb;border-bottom:1px solid #00000012;backdrop-filter:blur(17px)}
+.nav{min-height:74px;display:flex;align-items:center;gap:25px}
+.brand{display:flex;align-items:center;gap:11px;font-weight:900;letter-spacing:-.03em;white-space:nowrap}
+.mark{width:39px;height:39px;display:grid;place-items:center;border-radius:50%;background:#0b0b0c;color:#fff;font-family:Georgia,serif}
+.desktop{display:flex;align-items:center;gap:23px;margin-left:auto}
+.desktop>a,.drop>button{border:0;background:transparent;font-size:.89rem;font-weight:760}
+.desktop>a:hover,.drop>button:hover{color:#9b7911}
+.drop{position:relative}
+.drop>button:after{content:"⌄";margin-left:5px}
+.drop-menu{position:absolute;top:calc(100% + 20px);left:50%;width:240px;padding:9px;display:grid;gap:3px;background:#fff;border:1px solid #00000014;border-radius:17px;box-shadow:var(--shadow);opacity:0;visibility:hidden;transform:translate(-50%,-7px);transition:.2s}
+.drop:hover .drop-menu,.drop:focus-within .drop-menu{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.drop-menu a{padding:11px 12px;border-radius:10px;font-size:.88rem;font-weight:700}
+.drop-menu a:hover{background:var(--light)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:48px;padding:0 21px;border:1px solid var(--black);border-radius:999px;background:var(--black);color:#fff;font-weight:820;transition:.2s}
+.btn:hover{background:var(--gold);color:#000;transform:translateY(-2px)}
+.btn.outline{background:#fff;color:#000}.btn.outline:hover{background:#000;color:#fff}
+.nav-btn{min-height:42px;padding-inline:17px;font-size:.88rem}
+.menu-btn{display:none;border:0;width:44px;height:44px;border-radius:50%;background:var(--light);font-size:1.25rem}
+.mobile{display:none}
+.page-hero{padding:45px 0 42px}
+.hero-box{position:relative;overflow:hidden;min-height:430px;display:flex;align-items:flex-end;padding:clamp(34px,7vw,76px);border-radius:34px;background:radial-gradient(circle at 82% 18%,#d4af3752,transparent 28%),linear-gradient(135deg,#111,#29292c 55%,#050506);color:#fff;box-shadow:var(--shadow)}
+.hero-box:after{content:"HC";position:absolute;right:-2%;top:-10%;font-size:18rem;font-weight:950;color:transparent;-webkit-text-stroke:1px #ffffff16;line-height:1}
+.hero-content{position:relative;z-index:2;max-width:780px}
+.kicker{display:inline-flex;align-items:center;gap:9px;margin-bottom:18px;color:var(--gold2);font-size:.78rem;font-weight:900;letter-spacing:.15em;text-transform:uppercase}
+.kicker:before{content:"";width:26px;height:2px;background:currentColor}
+h1{font-size:clamp(3.1rem,8vw,7rem);line-height:.88;letter-spacing:-.07em}
+.hero-content p{max-width:650px;margin-top:22px;color:#ffffffb8;font-size:clamp(1rem,1.6vw,1.18rem)}
+.actions{display:flex;flex-wrap:wrap;gap:11px;margin-top:28px}
+.hero-box .btn{background:#fff;color:#000;border-color:#fff}.hero-box .btn:hover{background:var(--gold);border-color:var(--gold)}
+.hero-box .btn.outline{background:transparent;color:#fff}.hero-box .btn.outline:hover{background:#fff;color:#000}
+section.content{padding:86px 0}
+.section-head{display:flex;align-items:end;justify-content:space-between;gap:35px;margin-bottom:38px}
+.eyebrow{color:var(--gray);font-size:.76rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+h2{font-size:clamp(2rem,5vw,4.6rem);line-height:.96;letter-spacing:-.055em}
+.lead{max-width:680px;margin-top:18px;color:var(--gray);font-size:1.08rem}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.card{padding:27px;border:1px solid var(--line);border-radius:21px;background:var(--light)}
+.card.dark{background:#111;color:#fff;border-color:#111}
+.card.gold{background:var(--gold);border-color:var(--gold)}
+.card h3{font-size:1.4rem;letter-spacing:-.03em}
+.card p{margin-top:10px;color:var(--gray)}
+.card.dark p{color:#ffffffa6}
+.card .link{display:inline-block;margin-top:18px;font-weight:850}
+.list{border-top:1px solid var(--line)}
+.list-row{display:grid;grid-template-columns:140px 1fr auto;gap:24px;align-items:center;padding:27px 0;border-bottom:1px solid var(--line)}
+.list-row .date{color:#9a760b;font-size:.78rem;font-weight:900;letter-spacing:.11em;text-transform:uppercase}
+.list-row h3{font-size:clamp(1.3rem,2.5vw,2.2rem);letter-spacing:-.035em}
+.list-row p{color:var(--gray)}
+.arrow{width:46px;height:46px;display:grid;place-items:center;border:1px solid var(--line);border-radius:50%}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(35px,8vw,100px);align-items:start}
+.prose{max-width:850px}
+.prose h2,.prose h3{margin:35px 0 13px}
+.prose h2:first-child{margin-top:0}
+.prose p,.prose li{color:#3f3f43}
+.prose p+p{margin-top:15px}
+.prose ul,.prose ol{padding-left:22px;margin:13px 0 20px}
+.notice{padding:21px 23px;border-left:4px solid var(--gold);border-radius:0 14px 14px 0;background:#f8f4e7}
+.price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.price{padding:29px;border:1px solid var(--line);border-radius:22px}
+.price.featured{background:#111;color:#fff;border-color:#111;transform:translateY(-9px)}
+.price .amount{font-size:2.8rem;font-weight:950;letter-spacing:-.06em}
+.price ul{list-style:none;display:grid;gap:10px;margin:21px 0}
+.price li:before{content:"✓";margin-right:8px;color:#9a760b;font-weight:900}
+.price.featured li:before{color:var(--gold2)}
+.menu-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:17px}
+.menu-section{padding:26px;border:1px solid var(--line);border-radius:20px}
+.menu-section h3{font-size:1.55rem;margin-bottom:17px}
+.menu-item{display:flex;justify-content:space-between;gap:25px;padding:13px 0;border-bottom:1px dashed #d1d1d4}
+.menu-item:last-child{border-bottom:0}
+.menu-item small{display:block;color:var(--gray)}
+.chat-shell{max-width:780px;margin:auto;border:1px solid var(--line);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+.chat-head{padding:22px;background:#111;color:#fff}
+.chat-body{min-height:360px;padding:24px;background:#f6f6f7;display:flex;flex-direction:column;gap:14px}
+.bubble{max-width:78%;padding:13px 15px;border-radius:16px;background:#fff;box-shadow:0 5px 20px #0000000b}
+.bubble.user{align-self:flex-end;background:#111;color:#fff}
+.chat-form{display:flex;gap:10px;padding:15px;border-top:1px solid var(--line)}
+.chat-form input{flex:1;border:1px solid #d7d7d9;border-radius:999px;padding:0 16px}
+.footer{background:#0b0b0c;color:#fff;margin-top:80px}
+.footer-top{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;padding:72px 0 55px}
+.footer-title{font-size:clamp(2.4rem,6vw,5.2rem);line-height:.9;letter-spacing:-.06em}
+.footer-title em{font-family:Georgia,serif;color:var(--gold2);font-weight:500}
+.footer-links{display:grid;grid-template-columns:repeat(2,1fr);gap:30px}
+.footer-links h3{margin-bottom:14px;color:#ffffff72;font-size:.73rem;letter-spacing:.13em;text-transform:uppercase}
+.footer-links a{display:block;width:fit-content;margin:9px 0;font-weight:680}.footer-links a:hover{color:var(--gold2)}
+.footer-bottom{display:flex;justify-content:space-between;gap:25px;padding:22px 0;border-top:1px solid #ffffff1e;color:#ffffff75;font-size:.82rem}
+.reveal{opacity:0;transform:translateY(22px);transition:.6s}.reveal.visible{opacity:1;transform:none}
+@media(max-width:950px){
+ .desktop,.nav>.nav-btn{display:none}.menu-btn{display:grid;place-items:center;margin-left:auto}
+ .mobile{position:fixed;inset:74px 0 0;z-index:999;display:grid;align-content:start;padding:22px;background:#fff;overflow:auto;transform:translateX(100%);transition:.25s}
+ .mobile.open{transform:none}.mobile a{padding:14px 8px;border-bottom:1px solid var(--line);font-weight:800}
+ .grid,.price-grid{grid-template-columns:1fr 1fr}.split,.footer-top{grid-template-columns:1fr}
+}
+@media(max-width:680px){
+ .container{width:min(calc(100% - 24px),var(--max))}
+ .banner-inner{justify-content:flex-start;text-align:left;font-size:.8rem}.banner a{display:none}
+ .page-hero{padding-top:14px}.hero-box{min-height:520px;padding:28px 23px;border-radius:23px}.hero-box:after{font-size:10rem}
+ h1{font-size:clamp(3.1rem,17vw,5rem)}section.content{padding:68px 0}
+ .section-head{display:block}.grid,.price-grid,.menu-grid{grid-template-columns:1fr}.price.featured{transform:none}
+ .list-row{grid-template-columns:1fr auto;gap:8px}.list-row .date{grid-column:1/-1}
+ .footer-links{grid-template-columns:1fr 1fr}.footer-bottom{display:block}.footer-bottom p+p{margin-top:6px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+
+
+/* =========================================================
+   HOLLYWOOD CINEMA V2 REFINEMENTS
+   These styles are grouped here to make future editing easy.
+========================================================= */
+
+body {
+  opacity: 0;
+  transition: opacity .10s ease;
+}
+
+body.page-ready {
+  opacity: 1;
+}
+
+.logo-image {
+  width: 52px;
+  height: 52px;
+  object-fit: contain;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.brand {
+  gap: 13px;
+}
+
+.page-hero {
+  padding: 26px 0 30px;
+}
+
+.hero-box {
+  min-height: 285px;
+  padding: clamp(30px, 5vw, 54px);
+  border-radius: 28px;
+}
+
+.hero-box::after {
+  font-size: 11rem;
+  top: -16%;
+}
+
+.hero-content {
+  max-width: 700px;
+}
+
+.hero-content h1 {
+  font-size: clamp(2.5rem, 6vw, 5.2rem);
+  line-height: .92;
+}
+
+.hero-content p {
+  max-width: 620px;
+  margin-top: 16px;
+}
+
+.hero-content .actions:empty {
+  display: none;
+}
+
+section.content {
+  padding: 62px 0;
+}
+
+.card,
+.quick-card,
+.event-row,
+.list-row,
+.price,
+.menu-section,
+.notice,
+.hero-box,
+.btn,
+.drop-menu a {
+  transition:
+    transform .22s ease,
+    box-shadow .22s ease,
+    border-color .22s ease,
+    background .22s ease,
+    color .22s ease;
+}
+
+.card:hover,
+.quick-card:hover,
+.price:hover,
+.menu-section:hover {
+  transform: translateY(-7px) scale(1.015);
+  box-shadow: 0 24px 55px rgba(0,0,0,.12);
+  border-color: rgba(0,0,0,.28);
+}
+
+.list-row:hover,
+.event-row:hover {
+  transform: translateX(8px);
+  padding-left: 14px;
+  padding-right: 14px;
+  background: #fafafa;
+  border-radius: 14px;
+}
+
+.card.dark:hover {
+  background: #1c1c1f;
+}
+
+.card.gold:hover {
+  background: #e1bd47;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.025);
+  box-shadow: 0 12px 28px rgba(0,0,0,.16);
+}
+
+.drop-menu a:hover {
+  transform: translateX(4px);
+}
+
+.section-head {
+  margin-bottom: 30px;
+}
+
+.section-head h2 {
+  font-size: clamp(2rem, 4.2vw, 4rem);
+}
+
+.footer {
+  margin-top: 55px;
+}
+
+.footer-top {
+  padding-top: 58px;
+}
+
+@media (max-width: 680px) {
+  .logo-image {
+    width: 44px;
+    height: 44px;
+  }
+
+  .page-hero {
+    padding-top: 10px;
+  }
+
+  .hero-box {
+    min-height: 330px;
+    padding: 25px 20px;
+    border-radius: 20px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.7rem, 14vw, 4.3rem);
+  }
+
+  section.content {
+    padding: 52px 0;
+  }
+}
+
+
+/* =========================================================
+   V3 ANNOUNCEMENT BANNER
+   The banner remains visible while visitors scroll.
+========================================================= */
+
+.banner {
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+}
+
+.banner-inner {
+  min-height: 48px;
+  padding-right: 18px;
+}
+
+.banner-close {
+  display: none !important;
+}
+
+.header {
+  top: 48px;
+}
+
+@media (max-width: 680px) {
+  .header {
+    top: 48px;
+  }
+}
+
+
+/* =========================================================
+   THROWBACK THURSDAY FORM PAGE
+========================================================= */
+
+.throwback-page {
+  padding: 54px 0 80px;
+  background:
+    radial-gradient(circle at top right, rgba(199,165,74,.12), transparent 34%),
+    #f7f7f4;
+}
+
+.throwback-intro {
+  max-width: 760px;
+  margin-bottom: 28px;
+}
+
+.throwback-intro h1 {
+  margin: 8px 0 12px;
+  font-size: clamp(2.2rem, 5vw, 4.5rem);
+  line-height: .98;
+  letter-spacing: -.045em;
+}
+
+.throwback-intro p,
+.throwback-date-copy p,
+.throwback-form-heading p {
+  color: #666;
+  line-height: 1.65;
+}
+
+.throwback-date-card {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 28px;
+  padding: 28px;
+  margin-bottom: 34px;
+  border-radius: 28px;
+  color: #fff;
+  background:
+    linear-gradient(135deg, rgba(199,165,74,.18), transparent 42%),
+    #111;
+  box-shadow: 0 24px 60px rgba(0,0,0,.14);
+  overflow: hidden;
+  position: relative;
+}
+
+.throwback-date-card::after {
+  content: "";
+  position: absolute;
+  width: 190px;
+  height: 190px;
+  right: -70px;
+  top: -95px;
+  border-radius: 50%;
+  border: 28px solid rgba(199,165,74,.18);
+}
+
+.throwback-date-badge {
+  width: 96px;
+  min-height: 112px;
+  border-radius: 22px;
+  background: #c7a54a;
+  color: #111;
+  display: grid;
+  place-items: center;
+  align-content: center;
+  position: relative;
+  z-index: 1;
+}
+
+.throwback-date-badge span {
+  font-size: .78rem;
+  font-weight: 900;
+  letter-spacing: .16em;
+}
+
+.throwback-date-badge strong {
+  font-size: 3.4rem;
+  line-height: .95;
+}
+
+.throwback-date-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.throwback-date-copy h2 {
+  margin: 4px 0 8px;
+  font-size: clamp(1.5rem, 3vw, 2.4rem);
+}
+
+.throwback-date-copy p {
+  color: rgba(255,255,255,.72);
+  margin: 0;
+  max-width: 700px;
+}
+
+.throwback-date-mark {
+  text-align: right;
+  position: relative;
+  z-index: 1;
+}
+
+.throwback-date-mark strong,
+.throwback-date-mark small {
+  display: block;
+}
+
+.throwback-date-mark strong {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.throwback-date-mark small {
+  color: #c7a54a;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  margin-top: 8px;
+}
+
+.throwback-form-section {
+  background: #fff;
+  border: 1px solid #e4e4df;
+  border-radius: 28px;
+  padding: clamp(24px, 5vw, 50px);
+  box-shadow: 0 16px 45px rgba(0,0,0,.07);
+}
+
+.throwback-form-heading {
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+.throwback-form-heading h2 {
+  margin: 7px 0 7px;
+  font-size: clamp(1.8rem, 4vw, 3rem);
+}
+
+.throwback-form {
+  display: grid;
+  gap: 22px;
+}
+
+.form-grid.two-column {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 20px;
+}
+
+.form-field {
+  display: grid;
+  gap: 8px;
+}
+
+.form-field label {
+  color: #111;
+  font-weight: 800;
+  font-size: .95rem;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  width: 100%;
+  border: 2px solid #d9d9d3;
+  border-radius: 16px;
+  background: #fbfbf9;
+  color: #111;
+  padding: 15px 16px;
+  font: inherit;
+  outline: none;
+  transition: border-color .14s ease, box-shadow .14s ease, background .14s ease;
+}
+
+.form-field input,
+.form-field select {
+  min-height: 56px;
+}
+
+.form-field textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  background: #fff;
+  border-color: #c7a54a;
+  box-shadow: 0 0 0 4px rgba(199,165,74,.15);
+}
+
+.throwback-checkbox {
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  color: #222;
+  font-weight: 700;
+  line-height: 1.45;
+}
+
+.throwback-checkbox input {
+  width: 19px;
+  height: 19px;
+  margin-top: 1px;
+  accent-color: #111;
+}
+
+.throwback-submit {
+  width: 100%;
+  min-height: 58px;
+  border: 0;
+  border-radius: 999px;
+  background: #111;
+  color: #fff;
+  font-weight: 900;
+  font-size: 1rem;
+  transition: transform .14s ease, background .14s ease;
+}
+
+.throwback-submit:hover {
+  transform: translateY(-2px);
+  background: #c7a54a;
+  color: #111;
+}
+
+.throwback-form-note {
+  margin: -5px 0 0;
+  color: #777;
+  text-align: center;
+  font-size: .82rem;
+  line-height: 1.5;
+}
+
+.throwback-success {
+  padding: 18px;
+  border-radius: 16px;
+  background: #f1eee4;
+  border: 1px solid #d9c98e;
+  text-align: center;
+}
+
+.throwback-success strong,
+.throwback-success span {
+  display: block;
+}
+
+.throwback-success span {
+  color: #555;
+  margin-top: 5px;
+}
+
+.throwback-disclaimer {
+  padding: 24px 4px 0;
+}
+
+.throwback-disclaimer h3 {
+  margin-bottom: 8px;
+}
+
+.throwback-disclaimer p {
+  color: #777;
+  font-size: .83rem;
+  line-height: 1.6;
+  max-width: 950px;
+}
+
+@media (max-width: 760px) {
+  .throwback-page {
+    padding-top: 32px;
+  }
+
+  .throwback-date-card {
+    grid-template-columns: auto 1fr;
+    gap: 18px;
+    padding: 22px;
+  }
+
+  .throwback-date-mark {
+    display: none;
+  }
+
+  .form-grid.two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .throwback-date-card {
+    grid-template-columns: 1fr;
+  }
+
+  .throwback-date-badge {
+    width: 82px;
+    min-height: 94px;
+  }
+
+  .throwback-date-badge strong {
+    font-size: 2.8rem;
+  }
+
+  .throwback-form-section {
+    border-radius: 22px;
+    padding: 22px 18px;
+  }
+}
+
+
+.logo-fallback{
+  width:44px;height:44px;border-radius:50%;
+  display:grid;place-items:center;background:#111;color:#fff;
+  font-weight:900;letter-spacing:-.04em;
+}
+</style>
 
 </head><body>
 <div class="banner">
@@ -14,7 +638,7 @@
 </div>
 <header class="header">
  <div class="container nav">
-  <a class="brand" href="index.html"><img class="logo-image" src="hollywood-cinema-logo.png" alt="Hollywood Cinema logo"><span>Hollywood Cinema</span></a>
+  <a class="brand" href="index.html"><div class="logo-fallback">HC</div><span>Hollywood Cinema</span></a>
   <nav class="desktop">
    <a href="index.html">Home</a>
    <a href="shop.html">Shop</a>
@@ -40,20 +664,127 @@
  </nav>
 </header>
 
+
 <main>
-<section class="page-hero"><div class="container"><div class="hero-box">
- <div class="hero-content"><div class="kicker">Classic movie series</div><h1>The movies you love return.</h1><p>Revisit unforgettable films with select Throwback Thursday presentations at Hollywood Cinema.</p>
- <div class="actions"><a class="btn" href="events.html">See Next Movie →</a></div></div>
-</div></div></section>
-<section class="content"><div class="container">
-<div class="grid">
-<div class="card dark"><h3>Classic Films</h3><p>Return to favorites that deserve another moment on the big screen.</p></div>
-<div class="card gold"><h3>Select Thursdays</h3><p>Watch the events page for each movie, time, and ticket release.</p></div>
-<div class="card"><h3>Full Experience</h3><p>Complete your throwback night with popcorn, drinks, and candy.</p></div>
-</div>
-<div class="notice" style="margin-top:28px">Add the next Throwback Thursday movie poster, rating, runtime, date, and admission price here.</div>
-</div></section>
+  <section class="throwback-page">
+    <div class="container">
+      <div class="throwback-intro">
+        <span class="kicker">THROWBACK THURSDAY</span>
+        <h1>Request a Throwback Movie Night</h1>
+        <p>Suggest a classic movie and reserve space for the next Throwback Thursday event.</p>
+      </div>
+
+      <section class="throwback-date-card" aria-labelledby="nextThrowbackTitle">
+        <div class="throwback-date-badge">
+          <span>JUL</span>
+          <strong>30</strong>
+        </div>
+
+        <div class="throwback-date-copy">
+          <span class="kicker">NEXT EVENT</span>
+          <h2 id="nextThrowbackTitle">Thursday, July 30 at 7:00 PM</h2>
+          <p>No ticket purchase is required. Complete the request form below to submit your movie suggestion and estimated guest count.</p>
+        </div>
+
+        <div class="throwback-date-mark">
+          <strong>THROWBACK<br>THURSDAY</strong>
+          <small>AT HOLLYWOOD CINEMA</small>
+        </div>
+      </section>
+
+      <section class="throwback-form-section">
+        <div class="throwback-form-heading">
+          <span class="kicker">EVENT REQUEST</span>
+          <h2>Throwback Thursday Form</h2>
+          <p>Complete this form to submit your request.</p>
+        </div>
+
+        <form class="throwback-form" id="throwbackForm">
+          <div class="form-grid two-column">
+            <div class="form-field">
+              <label for="fullName">Full Name</label>
+              <input id="fullName" name="fullName" type="text" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-field">
+              <label for="email">Email Address</label>
+              <input id="email" name="email" type="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="form-field">
+              <label for="phone">Phone Number</label>
+              <input id="phone" name="phone" type="tel" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="form-field">
+              <label for="guests">Number of Guests</label>
+              <select id="guests" name="guests" required>
+                <option value="">Select one</option>
+                <option>1 guest</option>
+                <option>2 guests</option>
+                <option>3 guests</option>
+                <option>4 guests</option>
+                <option>5 guests</option>
+                <option>6 guests</option>
+                <option>7 guests</option>
+                <option>8 guests</option>
+                <option>9 guests</option>
+                <option>10+ guests</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label for="movieSuggestion">Throwback Movie Suggestion</label>
+            <input
+              id="movieSuggestion"
+              name="movieSuggestion"
+              type="text"
+              placeholder="Example: Back to the Future, Home Alone, Ghostbusters"
+              required
+            >
+          </div>
+
+          <div class="form-field">
+            <label for="notes">Questions or Notes</label>
+            <textarea
+              id="notes"
+              name="notes"
+              rows="6"
+              placeholder="Type anything Hollywood Cinema should know..."
+            ></textarea>
+          </div>
+
+          <label class="throwback-checkbox">
+            <input type="checkbox" name="foodAcknowledgement" required>
+            <span>I understand that food and beverages are not included and may be available for purchase.</span>
+          </label>
+
+          <button class="throwback-submit" type="submit">Submit Form</button>
+
+          <p class="throwback-form-note">
+            Submitting this form does not guarantee approval or availability. Hollywood Cinema may contact you if more information is needed.
+          </p>
+
+          <div class="throwback-success" id="throwbackSuccess" hidden>
+            <strong>Request received.</strong>
+            <span>Thank you. Hollywood Cinema will review your Throwback Thursday request.</span>
+          </div>
+        </form>
+      </section>
+
+      <section class="throwback-disclaimer">
+        <h3>Event Information</h3>
+        <p>
+          Food and beverages are not included and may be available for purchase. By attending,
+          guests agree to follow Hollywood Cinema policies. Hollywood Cinema may modify, postpone,
+          or cancel an event due to employee availability, operational needs, or unforeseen circumstances.
+        </p>
+      </section>
+    </div>
+  </section>
 </main>
+
 <footer class="footer">
  <div class="container">
   <div class="footer-top">
@@ -66,5 +797,90 @@
   <div class="footer-bottom"><p>© <span data-year></span> Hollywood Cinema. All rights reserved.</p><p>Hollywood Cinema™</p></div>
  </div>
 </footer>
-<script src="script.js"></script>
+<script>
+
+const SITE_BANNER = {
+  enabled: true,
+  message: "Hollywood Cinema is temporarily closed July 21–24. We reopen July 25.",
+  linkText: "View update →",
+  link: "events.html"
+};
+const banner=document.querySelector(".banner");
+if(banner){
+ if(!SITE_BANNER.enabled) banner.style.display="none";
+ else{
+  banner.querySelector("[data-banner-text]").textContent=SITE_BANNER.message;
+  banner.querySelector("[data-banner-link]").textContent=SITE_BANNER.linkText;
+  banner.querySelector("[data-banner-link]").href=SITE_BANNER.link;
+ }
+
+}
+const menuBtn=document.querySelector(".menu-btn"), mobile=document.querySelector(".mobile");
+if(menuBtn&&mobile){
+ menuBtn.onclick=()=>{
+  const open=mobile.classList.toggle("open");
+  document.body.classList.toggle("menu-open",open);
+  menuBtn.textContent=open?"×":"☰";
+  menuBtn.setAttribute("aria-expanded",String(open));
+ };
+ mobile.querySelectorAll("a").forEach(a=>a.onclick=()=>{
+  mobile.classList.remove("open");document.body.classList.remove("menu-open");
+  menuBtn.textContent="☰";menuBtn.setAttribute("aria-expanded","false");
+ });
+}
+document.querySelectorAll("[data-year]").forEach(x=>x.textContent=new Date().getFullYear());
+const io=new IntersectionObserver(es=>es.forEach(e=>{
+ if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}
+}),{threshold:.1});
+document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+
+const chatForm=document.querySelector("#chatForm");
+if(chatForm){
+ chatForm.addEventListener("submit",e=>{
+  e.preventDefault();
+  const input=document.querySelector("#chatInput"),body=document.querySelector(".chat-body");
+  const text=input.value.trim(); if(!text)return;
+  const u=document.createElement("div");u.className="bubble user";u.textContent=text;body.appendChild(u);
+  const b=document.createElement("div");b.className="bubble";
+  b.textContent="Thanks! This demo can be connected to your real Hollywood Cinema support or AI system.";
+  setTimeout(()=>{body.appendChild(b);body.scrollTop=body.scrollHeight},350);
+  input.value="";body.scrollTop=body.scrollHeight;
+ });
+}
+
+
+// Smooth page fade-in.
+window.addEventListener("DOMContentLoaded", () => {
+  requestAnimationFrame(() => document.body.classList.add("page-ready"));
+});
+
+// Smooth internal page transition.
+document.querySelectorAll('a[href$=".html"]').forEach(link => {
+  link.addEventListener("click", event => {
+    const href = link.getAttribute("href");
+    if (!href || href.startsWith("#") || link.target === "_blank") return;
+    event.preventDefault();
+    document.body.classList.remove("page-ready");
+    setTimeout(() => {
+      window.location.href = href;
+    }, 65);
+  });
+});
+
+
+// Throwback Thursday request form demo behavior.
+// Replace this with Formspree, Google Apps Script, or another form endpoint
+// when you are ready to receive real submissions.
+const throwbackForm = document.getElementById("throwbackForm");
+if (throwbackForm) {
+  throwbackForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const success = document.getElementById("throwbackSuccess");
+    success.hidden = false;
+    throwbackForm.reset();
+    success.scrollIntoView({ behavior: "smooth", block: "center" });
+  });
+}
+
+</script>
 </body></html>

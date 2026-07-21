@@ -1,69 +1,155 @@
-
 const SITE_BANNER = {
   enabled: true,
   message: "Hollywood Cinema is temporarily closed July 21–24. We reopen July 25.",
   linkText: "View update →",
-  link: "https://docs.google.com/document/d/1c9uj4v8thVPkji3xI1JWu2JrN_IvVqfItPoRvXV4IyQ/edit?usp=sharing""
-  
+  link: "https://docs.google.com/document/d/1c9uj4v8thVPkji3xI1JWu2JrN_IvVqfItPoRvXV4IyQ/edit?usp=sharing"
 };
-const banner=document.querySelector(".banner");
-if(banner){
- if(!SITE_BANNER.enabled) banner.style.display="none";
- else{
-  banner.querySelector("[data-banner-text]").textContent=SITE_BANNER.message;
-  banner.querySelector("[data-banner-link]").textContent=SITE_BANNER.linkText;
-  banner.querySelector("[data-banner-link]").href=SITE_BANNER.link;
- }
 
-}
-const menuBtn=document.querySelector(".menu-btn"), mobile=document.querySelector(".mobile");
-if(menuBtn&&mobile){
- menuBtn.onclick=()=>{
-  const open=mobile.classList.toggle("open");
-  document.body.classList.toggle("menu-open",open);
-  menuBtn.textContent=open?"×":"☰";
-  menuBtn.setAttribute("aria-expanded",String(open));
- };
- mobile.querySelectorAll("a").forEach(a=>a.onclick=()=>{
-  mobile.classList.remove("open");document.body.classList.remove("menu-open");
-  menuBtn.textContent="☰";menuBtn.setAttribute("aria-expanded","false");
- });
-}
-document.querySelectorAll("[data-year]").forEach(x=>x.textContent=new Date().getFullYear());
-const io=new IntersectionObserver(es=>es.forEach(e=>{
- if(e.isIntersecting){e.target.classList.add("visible");io.unobserve(e.target)}
-}),{threshold:.1});
-document.querySelectorAll(".reveal").forEach(x=>io.observe(x));
+const banner = document.querySelector(".banner");
 
-const chatForm=document.querySelector("#chatForm");
-if(chatForm){
- chatForm.addEventListener("submit",e=>{
-  e.preventDefault();
-  const input=document.querySelector("#chatInput"),body=document.querySelector(".chat-body");
-  const text=input.value.trim(); if(!text)return;
-  const u=document.createElement("div");u.className="bubble user";u.textContent=text;body.appendChild(u);
-  const b=document.createElement("div");b.className="bubble";
-  b.textContent="Thanks! This demo can be connected to your real Hollywood Cinema support or AI system.";
-  setTimeout(()=>{body.appendChild(b);body.scrollTop=body.scrollHeight},350);
-  input.value="";body.scrollTop=body.scrollHeight;
- });
+if (banner) {
+  if (!SITE_BANNER.enabled) {
+    banner.style.display = "none";
+  } else {
+    const bannerText = banner.querySelector("[data-banner-text]");
+    const bannerLink = banner.querySelector("[data-banner-link]");
+
+    if (bannerText) {
+      bannerText.textContent = SITE_BANNER.message;
+    }
+
+    if (bannerLink) {
+      bannerLink.textContent = SITE_BANNER.linkText;
+      bannerLink.href = SITE_BANNER.link;
+      bannerLink.target = "_blank";
+      bannerLink.rel = "noopener noreferrer";
+    }
+  }
 }
 
+const menuBtn = document.querySelector(".menu-btn");
+const mobile = document.querySelector(".mobile");
+
+if (menuBtn && mobile) {
+  menuBtn.onclick = () => {
+    const open = mobile.classList.toggle("open");
+
+    document.body.classList.toggle("menu-open", open);
+    menuBtn.textContent = open ? "×" : "☰";
+    menuBtn.setAttribute("aria-expanded", String(open));
+  };
+
+  mobile.querySelectorAll("a").forEach((link) => {
+    link.onclick = () => {
+      mobile.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuBtn.textContent = "☰";
+      menuBtn.setAttribute("aria-expanded", "false");
+    };
+  });
+}
+
+document.querySelectorAll("[data-year]").forEach((element) => {
+  element.textContent = new Date().getFullYear();
+});
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  },
+  {
+    threshold: 0.1
+  }
+);
+
+document.querySelectorAll(".reveal").forEach((element) => {
+  observer.observe(element);
+});
+
+const chatForm = document.querySelector("#chatForm");
+
+if (chatForm) {
+  chatForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const input = document.querySelector("#chatInput");
+    const body = document.querySelector(".chat-body");
+
+    if (!input || !body) return;
+
+    const text = input.value.trim();
+
+    if (!text) return;
+
+    const userBubble = document.createElement("div");
+    userBubble.className = "bubble user";
+    userBubble.textContent = text;
+    body.appendChild(userBubble);
+
+    const botBubble = document.createElement("div");
+    botBubble.className = "bubble";
+    botBubble.textContent =
+      "Thanks! This demo can be connected to your real Hollywood Cinema support or AI system.";
+
+    setTimeout(() => {
+      body.appendChild(botBubble);
+      body.scrollTop = body.scrollHeight;
+    }, 350);
+
+    input.value = "";
+    body.scrollTop = body.scrollHeight;
+  });
+}
 
 // Smooth page fade-in.
 window.addEventListener("DOMContentLoaded", () => {
-  requestAnimationFrame(() => document.body.classList.add("page-ready"));
+  requestAnimationFrame(() => {
+    document.body.classList.add("page-ready");
+  });
 });
 
 // Smooth internal page transition.
-document.querySelectorAll('a[href$=".html"]').forEach(link => {
-  link.addEventListener("click", event => {
+document.querySelectorAll('a[href$=".html"]').forEach((link) => {
+  link.addEventListener("click", (event) => {
     const href = link.getAttribute("href");
-    if (!href || href.startsWith("#") || link.target === "_blank") return;
+
+    if (
+      !href ||
+      href.startsWith("#") ||
+      link.target === "_blank"
+    ) {
+      return;
+    }
+
     event.preventDefault();
     document.body.classList.remove("page-ready");
+
     setTimeout(() => {
       window.location.href = href;
     }, 65);
   });
+});
+
+// Site last updated message.
+window.addEventListener("DOMContentLoaded", () => {
+  if (document.querySelector(".site-last-updated")) return;
+
+  const updatedMessage = document.createElement("p");
+
+  updatedMessage.className = "site-last-updated";
+  updatedMessage.textContent =
+    "Site last updated: Monday, July 20th around 8:30 PM CST";
+
+  const footer = document.querySelector("footer");
+
+  if (footer) {
+    footer.appendChild(updatedMessage);
+  } else {
+    document.body.appendChild(updatedMessage);
+  }
 });

@@ -113,7 +113,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// Smooth internal page transition.
+// Smooth internal page transitions.
 document.querySelectorAll('a[href$=".html"]').forEach((link) => {
   link.addEventListener("click", (event) => {
     const href = link.getAttribute("href");
@@ -135,21 +135,20 @@ document.querySelectorAll('a[href$=".html"]').forEach((link) => {
   });
 });
 
-// Site last updated message.
+// Add the last-updated text beside the copyright.
 window.addEventListener("DOMContentLoaded", () => {
   if (document.querySelector(".site-last-updated")) return;
 
-  const updatedMessage = document.createElement("p");
+  const copyright =
+    document.querySelector(".copyright") ||
+    document.querySelector("footer p");
 
+  if (!copyright) return;
+
+  const updatedMessage = document.createElement("span");
   updatedMessage.className = "site-last-updated";
   updatedMessage.textContent =
-    "Site last updated: Monday, July 20th around 8:30 PM CST";
+    " Site last updated: Monday, July 20th around 8:30 PM CST.";
 
-  const footer = document.querySelector("footer");
-
-  if (footer) {
-    footer.appendChild(updatedMessage);
-  } else {
-    document.body.appendChild(updatedMessage);
-  }
+  copyright.appendChild(updatedMessage);
 });

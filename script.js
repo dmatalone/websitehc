@@ -1,5 +1,5 @@
 const SITE_BANNER = {
-  enabled: true,
+  enabled: false,
   message: "Hollywood Cinema is temporarily closed July 21–24. We reopen July 25.",
   linkText: "View update →",
   link: "https://docs.google.com/document/d/1c9uj4v8thVPkji3xI1JWu2JrN_IvVqfItPoRvXV4IyQ/edit?usp=sharing"

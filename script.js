@@ -145,10 +145,12 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (!copyright) return;
 
+  
   const updatedMessage = document.createElement("span");
   updatedMessage.className = "site-last-updated";
   updatedMessage.textContent =
-    " Site last updated: Monday, July 20th around 8:30 PM CST.";
+    
+    " Site last updated: Saturday, July 25th around 7:55 PM CST.";
 
   copyright.appendChild(updatedMessage);
 });

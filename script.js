@@ -1,8 +1,8 @@
 const SITE_BANNER = {
-  enabled: false,
-  message: "Hollywood Cinema is temporarily closed July 21–24. We reopen July 25.",
+  enabled: true,
+  message: "Hollywood Cinema will be closed Monday, August 3rd for our annual employee development day.",
   linkText: "View update →",
-  link: "https://docs.google.com/document/d/1c9uj4v8thVPkji3xI1JWu2JrN_IvVqfItPoRvXV4IyQ/edit?usp=sharing"
+  link: "https://docs.google.com/document/d/1lRnKGhbc9yynUhZMOQQkTBgpzANN2BLW-p_N1Bx-qDY/edit?usp=sharing"
 };
 
 const banner = document.querySelector(".banner");

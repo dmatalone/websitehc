@@ -1,8 +1,8 @@
 const SITE_BANNER = {
   enabled: true,
-  message: "Hollywood Cinema will be closed Monday, August 3rd for our annual employee development day.",
+  message: "Hollywood Cinema will be closed Monday, August 3rd for our Annual Employee Development Day.",
   linkText: "View update →",
-  link: "https://docs.google.com/document/d/1lRnKGhbc9yynUhZMOQQkTBgpzANN2BLW-p_N1Bx-qDY/edit?usp=sharing"
+  link: "https://docs.google.com/document/d/11RnKGhbc9yynUhZMOQkTBgpzANN2BLW-p_N1Bx-qDY/edit?usp=sharing"
 };
 
 const banner = document.querySelector(".banner");

@@ -132,18 +132,13 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  if (document.querySelector(".site-last-updated")) return;
-
-  const copyright =
+  const footerText =
     document.querySelector(".copyright") ||
+    document.querySelector(".footer-bottom p") ||
     document.querySelector("footer p");
 
-  if (!copyright) return;
-
-  const updatedMessage = document.createElement("span");
-  updatedMessage.className = "site-last-updated";
-  updatedMessage.textContent =
-    " Site last updated: Sunday, August 2nd around 9:15 AM CST.";
-
-  copyright.appendChild(updatedMessage);
+  if (footerText) {
+    footerText.textContent =
+      "Hollywood Cinema™ is a trademark of Hollywood Cinema LLC. Site last updated: Sunday, August 2nd around 9:15 AM CST.";
+  }
 });

@@ -1,5 +1,5 @@
 const SITE_BANNER = {
-  enabled: true,
+  enabled: false,
   message: "Hollywood Cinema will be closed Monday, August 3rd for our Annual Employee Development Day.",
   linkText: "View update →",
   link: "https://docs.google.com/document/d/1lRnKGhbc9yynUhZMOQQkTBgpzANN2BLW-p_N1Bx-qDY/edit?usp=sharing"

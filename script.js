@@ -10,7 +10,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (banner) {
     if (!SITE_BANNER.enabled) {
-      banner.style.display = "none";
+      banner.remove();
     } else {
       const bannerText = banner.querySelector("[data-banner-text]");
       const bannerLink = banner.querySelector("[data-banner-link]");
@@ -139,6 +139,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (footerText) {
     footerText.textContent =
-      "Hollywood Cinema™ is a trademark of Hollywood Cinema LLC. Site last updated: Sunday, August 2nd around 9:15 AM CST.";
+      "Hollywood Cinema™ is a trademark of Hollywood Cinema LLC.";
+
+    let updatedText = document.querySelector(".site-last-updated");
+
+    if (!updatedText) {
+      updatedText = document.createElement("p");
+      updatedText.className = "site-last-updated";
+      footerText.insertAdjacentElement("afterend", updatedText);
+    }
+
+    updatedText.textContent =
+      "Site last updated: Monday, August 10th around 9:20 AM CST.";
   }
 });

@@ -5,50 +5,40 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <meta name="theme-color" content="#ffffff">
   <meta
     name="description"
     content="Movies, themed events, unforgettable snacks, and a community-first entertainment experience."
   >
 
+  <meta name="theme-color" content="#ffffff">
+
   <title>Home | Hollywood Cinema</title>
 
   <link rel="stylesheet" href="style.css">
 
-  <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link
+    rel="icon"
+    type="image/png"
+    sizes="512x512"
+    href="favicon.png"
+  >
+
+  <link
+    rel="icon"
+    type="image/x-icon"
+    href="favicon.ico"
+  >
+
+  <link
+    rel="apple-touch-icon"
+    sizes="180x180"
+    href="apple-touch-icon.png"
+  >
 </head>
 
 <body>
 
-  <!-- ========================================
-       MOVIE WEB INTRO
-       Only appears on the homepage.
-  ========================================= -->
-
-  <div id="spider-intro">
-
-    <div class="intro-web web-one"></div>
-    <div class="intro-web web-two"></div>
-
-    <img
-      id="intro-logo"
-      src="hollywood-cinema-logo.png"
-      alt="Hollywood Cinema"
-    >
-
-    <div class="intro-text">
-      HOLLYWOOD CINEMA
-    </div>
-
-  </div>
-
-
-  <!-- ========================================
-       ANNOUNCEMENT BANNER
-  ========================================= -->
-
+  <!-- ANNOUNCEMENT BANNER -->
   <div class="banner">
     <div class="banner-inner">
       <span data-banner-text></span>
@@ -56,11 +46,7 @@
     </div>
   </div>
 
-
-  <!-- ========================================
-       HEADER
-  ========================================= -->
-
+  <!-- HEADER -->
   <header class="header">
 
     <div class="container nav">
@@ -77,7 +63,7 @@
 
       </a>
 
-
+      <!-- DESKTOP NAV -->
       <nav class="desktop">
 
         <a href="index.html">Home</a>
@@ -86,10 +72,11 @@
 
         <a href="events.html">Events</a>
 
-
         <div class="drop">
 
-          <button>Only Here</button>
+          <button type="button">
+            Only Here
+          </button>
 
           <div class="drop-menu">
 
@@ -109,10 +96,11 @@
 
         </div>
 
-
         <div class="drop">
 
-          <button>Food & Drink</button>
+          <button type="button">
+            Food & Drink
+          </button>
 
           <div class="drop-menu">
 
@@ -136,7 +124,6 @@
 
         </div>
 
-
         <a href="star-pass.html">
           Star Pass
         </a>
@@ -147,11 +134,9 @@
 
       </nav>
 
-
       <a class="btn nav-btn" href="events.html">
         Get Tickets
       </a>
-
 
       <button
         class="menu-btn"
@@ -163,9 +148,7 @@
 
     </div>
 
-
-    <!-- MOBILE MENU -->
-
+    <!-- MOBILE NAV -->
     <nav class="mobile">
 
       <a href="index.html">
@@ -224,16 +207,9 @@
 
   </header>
 
-
-  <!-- ========================================
-       MAIN CONTENT
-  ========================================= -->
-
   <main>
 
-
     <!-- HERO -->
-
     <section class="page-hero">
 
       <div class="container">
@@ -257,7 +233,10 @@
 
             <div class="actions">
 
-              <a class="btn" href="events.html">
+              <a
+                class="btn"
+                href="events.html"
+              >
                 View Events →
               </a>
 
@@ -271,9 +250,7 @@
 
     </section>
 
-
     <!-- EXPLORE -->
-
     <section class="content">
 
       <div class="container">
@@ -294,9 +271,7 @@
 
         </div>
 
-
         <div class="grid">
-
 
           <a
             class="card dark reveal"
@@ -317,7 +292,6 @@
 
           </a>
 
-
           <a
             class="card gold reveal"
             href="nfl.html"
@@ -336,7 +310,6 @@
             </span>
 
           </a>
-
 
           <a
             class="card reveal"
@@ -357,7 +330,6 @@
 
           </a>
 
-
           <a
             class="card reveal"
             href="throwback-thursday.html"
@@ -376,7 +348,6 @@
             </span>
 
           </a>
-
 
           <a
             class="card reveal"
@@ -397,7 +368,6 @@
 
           </a>
 
-
           <a
             class="card reveal"
             href="popcorn-chatbot.html"
@@ -417,16 +387,13 @@
 
           </a>
 
-
         </div>
 
       </div>
 
     </section>
 
-
     <!-- OUR STORY -->
-
     <section class="content">
 
       <div class="container split">
@@ -442,7 +409,6 @@
           </h2>
 
         </div>
-
 
         <div class="prose reveal">
 
@@ -473,14 +439,9 @@
 
     </section>
 
-
   </main>
 
-
-  <!-- ========================================
-       FOOTER
-  ========================================= -->
-
+  <!-- FOOTER -->
   <footer class="footer">
 
     <div class="container">
@@ -491,9 +452,7 @@
           See you at the <em>movies.</em>
         </h2>
 
-
         <div class="footer-links">
-
 
           <div>
 
@@ -519,7 +478,6 @@
 
           </div>
 
-
           <div>
 
             <h3>
@@ -544,11 +502,9 @@
 
           </div>
 
-
         </div>
 
       </div>
-
 
       <div class="footer-bottom">
 
@@ -566,61 +522,8 @@
 
   </footer>
 
-
   <script src="script.js"></script>
 
-
-  <!-- ========================================
-       WEB INTRO SCRIPT
-  ========================================= -->
-
-  <script>
-
-    const spiderIntro =
-      document.querySelector("#spider-intro");
-
-    if (spiderIntro) {
-
-      const introAlreadyPlayed =
-        sessionStorage.getItem(
-          "hollywoodSpiderIntro"
-        );
-
-
-      if (introAlreadyPlayed) {
-
-        spiderIntro.remove();
-
-      } else {
-
-        sessionStorage.setItem(
-          "hollywoodSpiderIntro",
-          "played"
-        );
-
-
-        setTimeout(() => {
-
-          spiderIntro.classList.add(
-            "intro-finished"
-          );
-
-
-          setTimeout(() => {
-
-            spiderIntro.remove();
-
-          }, 450);
-
-
-        }, 2450);
-
-      }
-
-    }
-
-  </script>
-
-
 </body>
+
 </html>

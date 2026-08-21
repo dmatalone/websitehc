@@ -3,14 +3,9 @@
 
 <head>
   <meta charset="utf-8">
-
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta name="theme-color" content="#ffffff">
-
   <meta
     name="description"
     content="Hollywood Cinema is currently undergoing website maintenance."
@@ -18,25 +13,9 @@
 
   <title>Website Maintenance | Hollywood Cinema</title>
 
-  <!-- FAVICONS -->
-  <link
-    rel="icon"
-    type="image/png"
-    sizes="512x512"
-    href="favicon.png"
-  >
-
-  <link
-    rel="icon"
-    type="image/x-icon"
-    href="favicon.ico"
-  >
-
-  <link
-    rel="apple-touch-icon"
-    sizes="180x180"
-    href="apple-touch-icon.png"
-  >
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <style>
 
@@ -52,13 +31,6 @@
 
     body {
       min-height: 100vh;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 100px 30px 30px;
-
       background: #ffffff;
       color: #111111;
 
@@ -72,115 +44,164 @@
     }
 
 
-    /* ========================================
+    /* ================================
        CLOSURE BANNER
-    ======================================== */
+    ================================= */
 
     .closure-banner {
-      position: fixed;
+      width: 100%;
 
-      top: 0;
-      left: 0;
-      right: 0;
+      padding: 15px 25px;
 
-      z-index: 9999;
-
-      min-height: 54px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      padding: 14px 25px;
-
-      background: #111111;
+      background: #0b0b0b;
       color: #ffffff;
 
       text-align: center;
 
       font-size: 14px;
-      font-weight: 600;
-
+      font-weight: 700;
       line-height: 1.5;
-
-      box-shadow:
-        0 2px 12px rgba(0, 0, 0, 0.12);
     }
 
     .closure-banner strong {
-      font-weight: 800;
+      color: #d5b45e;
     }
 
 
-    /* ========================================
-       MAINTENANCE PAGE
-    ======================================== */
+    /* ================================
+       PAGE
+    ================================= */
+
+    .page {
+      width: min(1100px, calc(100% - 40px));
+
+      margin: 0 auto;
+
+      padding: 65px 0 60px;
+    }
+
+
+    /* ================================
+       HOLLYWOOD CINEMA BRAND
+    ================================= */
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      gap: 22px;
+
+      margin-bottom: 90px;
+    }
+
+    .brand-name {
+      margin: 0;
+
+      color: #000000;
+
+      font-size: clamp(38px, 6vw, 72px);
+      font-weight: 900;
+
+      line-height: 1;
+
+      letter-spacing: -0.045em;
+
+      text-transform: uppercase;
+    }
+
+    .brand-logo {
+      width: 100px;
+      height: 100px;
+
+      object-fit: contain;
+
+      flex-shrink: 0;
+    }
+
+
+    /* ================================
+       MAINTENANCE CONTENT
+    ================================= */
 
     .maintenance {
-      width: 100%;
-      max-width: 680px;
+      max-width: 720px;
+
+      margin: 0 auto;
 
       text-align: center;
     }
 
-    .logo {
-      width: 90px;
-      height: 90px;
+    .label {
+      margin-bottom: 22px;
 
-      margin: 0 auto 32px;
+      color: #c69f3e;
 
-      object-fit: contain;
+      font-size: 14px;
+      font-weight: 800;
+
+      letter-spacing: 0.18em;
+
+      text-transform: uppercase;
     }
 
-    .label {
-      display: inline-block;
+    .little-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
-      margin-bottom: 20px;
-      padding: 8px 14px;
+      gap: 14px;
 
-      border: 1px solid #dddddd;
-      border-radius: 100px;
+      margin-bottom: 35px;
+    }
 
-      background: #f7f7f7;
+    .little-divider::before,
+    .little-divider::after {
+      content: "";
 
-      color: #555555;
+      width: 70px;
+      height: 1px;
 
-      font-size: 12px;
-      font-weight: 700;
+      background: #d5b45e;
+    }
 
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .star {
+      color: #d5b45e;
+
+      font-size: 18px;
     }
 
     h1 {
       margin: 0;
 
-      color: #111111;
+      color: #000000;
 
-      font-size: clamp(42px, 7vw, 72px);
+      font-size: clamp(46px, 7vw, 76px);
+      font-weight: 900;
+
       line-height: 1;
 
       letter-spacing: -0.055em;
+
+      text-transform: uppercase;
     }
 
     .message {
-      max-width: 540px;
+      max-width: 620px;
 
-      margin: 25px auto 0;
+      margin: 30px auto 0;
 
-      color: #666666;
+      color: #555555;
 
-      font-size: 18px;
-      line-height: 1.65;
+      font-size: 19px;
+      line-height: 1.7;
     }
 
     .divider {
-      width: 55px;
-      height: 3px;
+      width: 60px;
+      height: 2px;
 
-      margin: 32px auto;
-
-      border-radius: 100px;
+      margin: 36px auto;
 
       background: #d5b45e;
     }
@@ -188,54 +209,76 @@
     .small {
       margin: 0;
 
-      color: #888888;
+      color: #777777;
 
-      font-size: 14px;
-      line-height: 1.6;
+      font-size: 16px;
+      line-height: 1.8;
     }
 
-    .brand {
-      margin-top: 42px;
 
-      color: #999999;
+    /* ================================
+       BOTTOM BRAND
+    ================================= */
+
+    .bottom-brand {
+      margin-top: 60px;
+
+      color: #222222;
 
       font-size: 12px;
       font-weight: 600;
 
-      letter-spacing: 0.05em;
+      letter-spacing: 0.22em;
+
+      text-align: center;
+
+      text-transform: uppercase;
     }
 
 
-    /* ========================================
+    /* ================================
        MOBILE
-    ======================================== */
+    ================================= */
 
-    @media (max-width: 600px) {
-
-      body {
-        padding:
-          115px
-          24px
-          24px;
-      }
+    @media (max-width: 700px) {
 
       .closure-banner {
-        min-height: 64px;
+        padding: 13px 18px;
 
-        padding: 12px 18px;
-
-        font-size: 13px;
+        font-size: 12px;
       }
 
-      .logo {
-        width: 75px;
-        height: 75px;
+      .page {
+        padding-top: 45px;
+      }
 
-        margin-bottom: 26px;
+      .brand {
+        gap: 13px;
+
+        margin-bottom: 70px;
+      }
+
+      .brand-name {
+        font-size: clamp(29px, 9vw, 44px);
+      }
+
+      .brand-logo {
+        width: 65px;
+        height: 65px;
       }
 
       .message {
         font-size: 16px;
+      }
+
+      .small {
+        font-size: 14px;
+      }
+
+      .bottom-brand {
+        font-size: 10px;
+
+        letter-spacing: 0.15em;
       }
 
     }
@@ -247,57 +290,70 @@
 <body>
 
 
-  <!-- ========================================
-       CLOSURE BANNER
-  ======================================== -->
+  <!-- CLOSURE BANNER -->
 
   <div class="closure-banner">
-
-    <span>
-      <strong>Hollywood Cinema is closed August 21st–23rd.</strong>
-      Thank you for your understanding.
-    </span>
-
+    Hollywood Cinema is closed
+    <strong>August 21st–23rd.</strong>
+    Thank you for your understanding.
   </div>
 
 
-  <!-- ========================================
-       MAINTENANCE PAGE
-  ======================================== -->
+  <div class="page">
 
-  <main class="maintenance">
 
-    <img
-      class="logo"
-      src="hollywood-cinema-logo.png"
-      alt="Hollywood Cinema"
-    >
-
-    <div class="label">
-      Website Maintenance
-    </div>
-
-    <h1>
-      We'll be right back.
-    </h1>
-
-    <p class="message">
-      The Hollywood Cinema website is currently down
-      while we make important fixes and improvements.
-    </p>
-
-    <div class="divider"></div>
-
-    <p class="small">
-      We apologize for the inconvenience.
-      Please check back soon.
-    </p>
+    <!-- HOLLYWOOD CINEMA LOGO / NAME -->
 
     <div class="brand">
-      HOLLYWOOD CINEMA™ · SINCE 2023
+
+      <div class="brand-name">
+        Hollywood Cinema
+      </div>
+
+      <img
+        class="brand-logo"
+        src="hollywood-cinema-logo.png"
+        alt="Hollywood Cinema logo"
+      >
+
     </div>
 
-  </main>
+
+    <!-- MAINTENANCE -->
+
+    <main class="maintenance">
+
+      <div class="label">
+        Website Maintenance
+      </div>
+
+      <div class="little-divider">
+        <span class="star">★</span>
+      </div>
+
+      <h1>
+        We'll Be Right Back.
+      </h1>
+
+      <p class="message">
+        The Hollywood Cinema website is currently down
+        while we make important fixes and improvements.
+      </p>
+
+      <div class="divider"></div>
+
+      <p class="small">
+        We apologize for the inconvenience.<br>
+        Please check back soon.
+      </p>
+
+      <div class="bottom-brand">
+        Hollywood Cinema™ &nbsp;•&nbsp; Since 2023
+      </div>
+
+    </main>
+
+  </div>
 
 </body>
 

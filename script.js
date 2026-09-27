@@ -34,16 +34,20 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!scoreStrip) {
       scoreStrip = document.createElement("div");
       scoreStrip.className = "nfl-live-strip";
-      scoreStrip.innerHTML = '<span class="nfl-live-label">LIVE NFL</span><span class="nfl-live-score">Loading score...</span>';
+      scoreStrip.innerHTML = '<span class="nfl-live-dot"></span><span class="nfl-live-label">LIVE NFL</span><span class="nfl-live-score">Loading score...</span><span class="nfl-live-refresh">AUTO · 30 SEC</span>';
       banner.insertAdjacentElement("afterend", scoreStrip);
     }
 
     const scoreText = scoreStrip.querySelector(".nfl-live-score");
+    if (!scoreStrip.querySelector(".nfl-live-dot")) {
+      scoreStrip.insertAdjacentHTML("afterbegin", '<span class="nfl-live-dot"></span>');
+      scoreStrip.insertAdjacentHTML("beforeend", '<span class="nfl-live-refresh">AUTO · 30 SEC</span>');
+    }
 
     async function updateNFLScore() {
       try {
         const response = await fetch(
-          "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20260927",
+          "https://site.web.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20260927",
           { cache: "no-store" }
         );
         if (!response.ok) throw new Error("Score request failed");

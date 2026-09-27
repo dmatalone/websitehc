@@ -28,6 +28,54 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // Live NFL score strip. Refreshes automatically every 30 seconds.
+  if (banner && SITE_BANNER.enabled) {
+    const scoreStrip = document.createElement("div");
+    scoreStrip.className = "nfl-live-strip";
+    scoreStrip.innerHTML = '<span class="nfl-live-label">🏈 LIVE NFL</span><span class="nfl-live-score">Loading score…</span>';
+    banner.insertAdjacentElement("afterend", scoreStrip);
+
+    const scoreText = scoreStrip.querySelector(".nfl-live-score");
+
+    async function updateNFLScore() {
+      try {
+        const response = await fetch(
+          "https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?dates=20260927",
+          { cache: "no-store" }
+        );
+        if (!response.ok) throw new Error("Score request failed");
+        const data = await response.json();
+
+        const event = (data.events || []).find((game) => {
+          const competitors = game.competitions?.[0]?.competitors || [];
+          const teams = competitors.map((x) => x.team?.abbreviation);
+          return teams.includes("CIN") && teams.includes("PIT");
+        });
+
+        if (!event) {
+          scoreText.textContent = "Bengals at Steelers · Score unavailable";
+          return;
+        }
+
+        const competition = event.competitions[0];
+        const competitors = competition.competitors || [];
+        const cin = competitors.find((x) => x.team?.abbreviation === "CIN");
+        const pit = competitors.find((x) => x.team?.abbreviation === "PIT");
+        const status = event.status?.type?.shortDetail || event.status?.type?.detail || "";
+
+        scoreText.textContent =
+          "Bengals " + (cin?.score ?? "0") +
+          "  —  Steelers " + (pit?.score ?? "0") +
+          (status ? " · " + status : "");
+      } catch (error) {
+        scoreText.textContent = "Bengals at Steelers · Live score temporarily unavailable";
+      }
+    }
+
+    updateNFLScore();
+    setInterval(updateNFLScore, 30000);
+  }
+
   const menuBtn = document.querySelector(".menu-btn");
   const mobile = document.querySelector(".mobile");
 

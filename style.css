@@ -966,3 +966,36 @@ button:focus-visible {
   }
 
 }
+
+
+/* Live NFL score strip */
+.nfl-live-strip {
+  min-height: 38px;
+  padding: 8px 24px;
+  background: #d5b45e;
+  color: #111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1090;
+}
+.nfl-live-label {
+  font-weight: 900;
+  letter-spacing: .05em;
+}
+.nfl-live-score {
+  font-variant-numeric: tabular-nums;
+}
+@media (max-width: 600px) {
+  .nfl-live-strip {
+    padding: 8px 12px;
+    gap: 7px;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+}

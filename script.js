@@ -30,10 +30,13 @@ window.addEventListener("DOMContentLoaded", () => {
 
   // Live NFL score strip. Refreshes automatically every 30 seconds.
   if (banner && SITE_BANNER.enabled) {
-    const scoreStrip = document.createElement("div");
-    scoreStrip.className = "nfl-live-strip";
-    scoreStrip.innerHTML = '<span class="nfl-live-label">🏈 LIVE NFL</span><span class="nfl-live-score">Loading score…</span>';
-    banner.insertAdjacentElement("afterend", scoreStrip);
+    let scoreStrip = document.querySelector("#nflLiveStrip");
+    if (!scoreStrip) {
+      scoreStrip = document.createElement("div");
+      scoreStrip.className = "nfl-live-strip";
+      scoreStrip.innerHTML = '<span class="nfl-live-label">LIVE NFL</span><span class="nfl-live-score">Loading score...</span>';
+      banner.insertAdjacentElement("afterend", scoreStrip);
+    }
 
     const scoreText = scoreStrip.querySelector(".nfl-live-score");
 

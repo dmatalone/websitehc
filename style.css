@@ -999,3 +999,29 @@ button:focus-visible {
     flex-wrap: wrap;
   }
 }
+
+.nfl-live-strip {
+  min-height: 48px;
+  background: linear-gradient(90deg,#0d0d0d,#1b1b1b);
+  color:#fff;
+  border-top:1px solid rgba(213,180,94,.45);
+  border-bottom:2px solid #d5b45e;
+  box-shadow:0 5px 18px rgba(0,0,0,.14);
+  gap:10px;
+}
+.nfl-live-dot {
+  width:8px;height:8px;border-radius:50%;background:#e53935;
+  box-shadow:0 0 0 4px rgba(229,57,53,.14);
+  animation:nflPulse 1.5s infinite;
+}
+.nfl-live-label { color:#d5b45e; font-size:12px; letter-spacing:.12em; }
+.nfl-live-score { font-size:14px; font-weight:800; }
+.nfl-live-refresh {
+  padding-left:10px;border-left:1px solid rgba(255,255,255,.2);
+  color:#aaa;font-size:10px;letter-spacing:.08em;
+}
+@keyframes nflPulse { 50% { opacity:.45; transform:scale(.85); } }
+@media(max-width:600px){
+ .nfl-live-refresh{display:none}
+ .nfl-live-score{font-size:12px}
+}

@@ -34,14 +34,14 @@ window.addEventListener("DOMContentLoaded", () => {
     if (!scoreStrip) {
       scoreStrip = document.createElement("div");
       scoreStrip.className = "nfl-live-strip";
-      scoreStrip.innerHTML = '<span class="nfl-live-dot"></span><span class="nfl-live-label">LIVE NFL</span><span class="nfl-live-score">Loading score...</span><span class="nfl-live-refresh">AUTO · 30 SEC</span>';
+      scoreStrip.innerHTML = '<span class="nfl-live-dot"></span><span class="nfl-live-label">LIVE NFL</span><span class="nfl-live-score">Loading score...</span>';
       banner.insertAdjacentElement("afterend", scoreStrip);
     }
 
     const scoreText = scoreStrip.querySelector(".nfl-live-score");
     if (!scoreStrip.querySelector(".nfl-live-dot")) {
       scoreStrip.insertAdjacentHTML("afterbegin", '<span class="nfl-live-dot"></span>');
-      scoreStrip.insertAdjacentHTML("beforeend", '<span class="nfl-live-refresh">AUTO · 30 SEC</span>');
+      scoreStrip.insertAdjacentHTML("beforeend", '');
     }
 
     async function updateNFLScore() {

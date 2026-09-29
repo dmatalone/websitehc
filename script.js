@@ -1,5 +1,5 @@
 const SITE_BANNER = {
-  enabled: true,
+  enabled: false,
   message: "Doors Open @ 11:00 am for the Bengals at Steelers game today! 🏈",
   linkText: "",
   link: "#"
@@ -205,6 +205,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     updatedText.textContent =
-      "Site last updated: Sunday, September 27th at 9:15 AM CST.";
+      "Site last updated: Monday, September 28th at 7:45 PM CDT.";
   }
 });

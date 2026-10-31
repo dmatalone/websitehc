@@ -1,6 +1,6 @@
 const SITE_BANNER = {
-  enabled: false,
-  message: "Doors Open @ 11:00 am for the Bengals at Steelers game today! 🏈",
+  enabled: true,
+  message: "🎃 Happy Halloween! Reduced Hours Today: 10:00 AM – 2:00 PM. Have a safe and spooky Halloween!",
   linkText: "",
   link: "#"
 };

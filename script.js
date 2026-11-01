@@ -1,5 +1,5 @@
 const SITE_BANNER = {
-  enabled: true,
+  enabled: false,
   message: "🎃 Happy Halloween! Reduced Hours Today: 10:00 AM – 2:00 PM. Have a safe and spooky Halloween!",
   linkText: "",
   link: "#"

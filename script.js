@@ -1,6 +1,6 @@
 const SITE_BANNER = {
-  enabled: false,
-  message: "🎃 Happy Halloween! Reduced Hours Today: 10:00 AM – 2:00 PM. Have a safe and spooky Halloween!",
+  enabled: true,
+  message: "Thanksgiving Week Hours (Nov. 23–28): Closed Monday–Friday, November 23–27. Open Saturday, November 28, 10:00 AM–2:30 PM (reduced hours). Happy Thanksgiving!",
   linkText: "",
   link: "#"
 };

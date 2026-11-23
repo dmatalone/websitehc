@@ -150,6 +150,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     updatedText.textContent =
-      "Site last updated: Monday, November 23rd at 12:48 PM CST.";
+      "Site last updated: Monday, November 23rd at 12:50 PM CST.";
   }
 });

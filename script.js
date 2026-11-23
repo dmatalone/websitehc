@@ -139,7 +139,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
   if (footerText) {
     footerText.textContent =
-      "Hollywood Cinema™ is a trademark of Hollywood Cinema Corporation.";
+      "Hollywood Cinema™ is a trademark of the Hollywood Cinema Corporation.";
 
     let updatedText = document.querySelector(".site-last-updated");
 

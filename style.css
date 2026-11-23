@@ -1025,3 +1025,104 @@ button:focus-visible {
  .nfl-live-refresh{display:none}
  .nfl-live-score{font-size:12px}
 }
+
+
+/* =========================================
+   STAR PASS MEMBERSHIP CARDS
+========================================= */
+.price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  align-items: stretch;
+  margin-top: 24px;
+}
+.price-grid .price {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  padding: 30px 26px;
+  border: 1px solid #e7e3da;
+  border-radius: 24px;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(0,0,0,.055);
+}
+.price-grid .price.featured {
+  background: #171717;
+  color: #fff;
+  border-color: #d5b45e;
+  box-shadow: 0 15px 40px rgba(0,0,0,.15);
+}
+.price-grid .eyebrow {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #8a7442;
+  margin-bottom: 14px;
+}
+.price-grid .price.featured .eyebrow { color: #f0d36f; }
+.price-grid .price h3 {
+  font-size: clamp(21px, 2vw, 26px);
+  line-height: 1.2;
+  margin: 0 0 20px;
+  letter-spacing: -.025em;
+}
+.price-grid .amount {
+  font-size: clamp(38px, 4vw, 48px);
+  font-weight: 850;
+  line-height: 1;
+  letter-spacing: -.04em;
+  margin: 0 0 24px;
+  white-space: nowrap;
+}
+.price-grid .amount small {
+  font-size: 15px;
+  font-weight: 500;
+  color: #777;
+  letter-spacing: 0;
+}
+.price-grid .price.featured .amount small { color: #ddd; }
+.price-grid .price ul {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 30px;
+  display: grid;
+  gap: 14px;
+}
+.price-grid .price li {
+  position: relative;
+  padding-left: 25px;
+  line-height: 1.45;
+  font-size: 15px;
+}
+.price-grid .price li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #a58743;
+  font-weight: 900;
+}
+.price-grid .price.featured li::before { color: #f0d36f; }
+.price-grid .price .btn {
+  width: 100%;
+  margin-top: auto;
+  text-align: center;
+  text-decoration: none;
+}
+.price-grid .price.featured .btn {
+  background: #d5b45e;
+  border-color: #d5b45e;
+  color: #111;
+}
+.price-grid .price.featured .btn:hover { background: #efcf79; }
+@media (max-width: 980px) {
+  .price-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .price-grid .price:last-child { grid-column: 1 / -1; }
+}
+@media (max-width: 650px) {
+  .price-grid { grid-template-columns: 1fr; gap: 16px; }
+  .price-grid .price { padding: 25px 22px; }
+  .price-grid .price:last-child { grid-column: auto; }
+}

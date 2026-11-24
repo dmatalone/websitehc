@@ -74,7 +74,11 @@
           <p>Complete this form to submit your request.</p>
         </div>
 
-        <form class="throwback-form" id="throwbackForm">
+        <form class="throwback-form" id="throwbackForm" action="https://formsubmit.co/hollywood.cinema.st.charles@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Hollywood Cinema Throwback Thursday Movie Request">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off" aria-hidden="true">
           <div class="form-grid two-column">
             <div class="form-field">
               <label for="fullName">Full Name</label>
@@ -131,7 +135,7 @@
           </div>
 
           <label class="throwback-checkbox">
-            <input type="checkbox" name="foodAcknowledgement" required>
+            <input type="checkbox" name="foodAcknowledgement" value="Acknowledged" required>
             <span>I understand that food and beverages are not included and may be available for purchase.</span>
           </label>
 
@@ -141,10 +145,6 @@
             Submitting this form does not guarantee approval or availability. Hollywood Cinema may contact you if more information is needed.
           </p>
 
-          <div class="throwback-success" id="throwbackSuccess" hidden>
-            <strong>Request received.</strong>
-            <span>Thank you. Hollywood Cinema will review your Throwback Thursday request.</span>
-          </div>
         </form>
       </section>
 
@@ -176,17 +176,4 @@
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="zy-v4wK8McsGGLfiif0C3";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
 
-<script>
-// Demo form: shows local confirmation only, until a real submission endpoint is connected.
-const throwbackForm = document.getElementById("throwbackForm");
-if (throwbackForm) {
-  throwbackForm.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const success = document.getElementById("throwbackSuccess");
-    success.hidden = false;
-    throwbackForm.reset();
-    success.scrollIntoView({behavior: "smooth", block: "center"});
-  });
-}
-</script>
 </body></html>

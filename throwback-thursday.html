@@ -2,7 +2,7 @@
 <html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#ffffff"><meta name="description" content="Throwback Thursday movie suggestions and upcoming events at Hollywood Cinema.">
-<title>Throwback Thursday | Hollywood Cinema</title><link rel="stylesheet" href="style.css?v=20261124-throwback-badge">
+<title>Throwback Thursday | Hollywood Cinema</title><link rel="stylesheet" href="style.css?v=20261124-throwback-fallback">
 
 <link rel="icon" type="image/png" sizes="512x512" href="favicon.png">
 <link rel="icon" type="image/x-icon" href="favicon.ico">
@@ -148,6 +148,11 @@
 
           <button class="throwback-submit" type="submit">Submit Form</button>
           <p class="throwback-form-note" id="throwbackSubmitStatus" role="status" aria-live="polite" hidden></p>
+          <div class="throwback-email-fallback" style="padding:16px 18px;border:1px solid #d9c98e;border-radius:16px;background:#fff9e8;">
+            <p style="margin:0 0 10px;font-size:14px;"><strong>Having trouble submitting?</strong> FormSubmit may be temporarily unavailable. You can send your request directly to Hollywood Cinema through your email app instead.</p>
+            <button type="button" id="throwbackEmailFallback" class="throwback-submit" style="width:auto;min-height:44px;padding:8px 22px;font-size:14px;">Send Request by Email Instead</button>
+            <p style="margin:10px 0 0;font-size:12px;color:#666;">This opens your email app with the request details filled in. You must press Send in your email app. SMS confirmations are not active.</p>
+          </div>
 
 
           <p class="throwback-form-note">
@@ -180,7 +185,7 @@
   <div class="footer-bottom"><p>© <span data-year></span> Hollywood Cinema. All rights reserved.</p><p>Hollywood Cinema™</p></div>
  </div>
 </footer>
-<script src="script.js?v=20261124-form-fix"></script>
+<script src="script.js?v=20261124-form-fallback"></script>
 <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="zy-v4wK8McsGGLfiif0C3";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
@@ -192,6 +197,28 @@
   if (!form) return;
   const button = form.querySelector('button[type="submit"]');
   const status = document.getElementById("throwbackSubmitStatus");
+  const emailFallback = document.getElementById("throwbackEmailFallback");
+  if (emailFallback) emailFallback.addEventListener("click", () => {
+    if (!form.reportValidity()) return;
+    const data = new FormData(form);
+    const body = [
+      "Hollywood Cinema — Throwback Thursday Movie Request",
+      "",
+      "Name: " + (data.get("fullName") || ""),
+      "Email: " + (data.get("email") || ""),
+      "Phone: " + (data.get("phone") || ""),
+      "Guests: " + (data.get("guests") || ""),
+      "Movie suggestion: " + (data.get("movieSuggestion") || ""),
+      "Notes: " + (data.get("notes") || ""),
+      "Food acknowledgement: " + (data.get("foodAcknowledgement") || ""),
+      "Optional SMS confirmation consent: " + (data.get("smsConfirmationConsent") || "Not given"),
+      "",
+      "Submitting this request does not guarantee a reservation or approval."
+    ].join("\n");
+    window.location.href = "mailto:hollywood.cinema.st.charles@gmail.com?subject=" +
+      encodeURIComponent("New Hollywood Cinema Throwback Thursday Movie Request") +
+      "&body=" + encodeURIComponent(body);
+  });
   form.addEventListener("submit", async (event) => {
     event.preventDefault();
     if (!form.reportValidity() || button.disabled) return;

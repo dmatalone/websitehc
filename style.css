@@ -1126,3 +1126,50 @@ button:focus-visible {
   .price-grid .price { padding: 25px 22px; }
   .price-grid .price:last-child { grid-column: auto; }
 }
+
+
+/* Hollywood Cinema food & drink menu */
+.menu-grid {
+ display:grid;
+ grid-template-columns:repeat(2,minmax(0,1fr));
+ gap:22px;
+ align-items:start;
+ margin-top:28px;
+}
+.menu-section {
+ background:#fff;
+ border:1px solid #e8e3d8;
+ border-radius:20px;
+ padding:28px;
+ box-shadow:0 9px 28px rgba(0,0,0,.055);
+ min-width:0;
+}
+.menu-section:last-child { grid-column:1 / -1; }
+.menu-section h3 {
+ font-size:23px;
+ margin:0 0 14px;
+ padding-bottom:15px;
+ border-bottom:2px solid #d5b45e;
+}
+.menu-item {
+ display:flex;
+ justify-content:space-between;
+ align-items:flex-start;
+ gap:18px;
+ padding:15px 0;
+ border-bottom:1px solid #f0ede7;
+}
+.menu-item:last-child {border-bottom:0;}
+.menu-item > div {min-width:0;}
+.menu-item strong {font-size:16px;line-height:1.4;}
+.menu-item > strong {font-size:17px;white-space:nowrap;font-variant-numeric:tabular-nums;color:#8b6c27;}
+.menu-item small {display:block;margin-top:5px;color:#666;line-height:1.5;font-size:13px;}
+.menu-toppings {background:#faf6ea;padding:16px 18px;margin-top:15px;border-radius:12px;}
+.menu-toppings strong {font-size:14px;}
+.menu-toppings p {font-size:14px;line-height:1.6;margin:5px 0 0;}
+.menu-note {font-size:13px;color:#666;margin:22px 2px 0;line-height:1.6;}
+@media (max-width:700px) {
+ .menu-grid{grid-template-columns:1fr;gap:16px;}
+ .menu-section{padding:22px;}
+ .menu-section:last-child{grid-column:auto;}
+}

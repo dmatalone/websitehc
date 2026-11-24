@@ -139,19 +139,12 @@
             <span>I understand that food and beverages are not included and may be available for purchase.</span>
           </label>
 
-          <label class="throwback-checkbox">
-            <input type="checkbox" name="smsConfirmationConsent" value="Yes - one-time request confirmation">
-            <span>Optional: I agree to receive a one-time text message from Hollywood Cinema confirming receipt of this Throwback Thursday request at the phone number I provided. Message and data rates may apply. This does not sign me up for promotional texts.</span>
-          </label>
-
-          <p class="throwback-form-note">Text confirmations are not yet active. Until enabled, your request will still be submitted normally, but you will not receive an automatic text.</p>
-
           <button class="throwback-submit" type="submit">Submit Form</button>
           <p class="throwback-form-note">After submitting, FormSubmit may open a verification or confirmation page. Complete that step to finish sending the request.</p>
           <div class="throwback-email-fallback" style="padding:16px 18px;border:1px solid #d9c98e;border-radius:16px;background:#fff9e8;">
             <p style="margin:0 0 10px;font-size:14px;"><strong>Having trouble submitting?</strong> FormSubmit may be temporarily unavailable. You can send your request directly to Hollywood Cinema through your email app instead.</p>
             <button type="button" id="throwbackEmailFallback" class="throwback-submit" style="width:auto;min-height:44px;padding:8px 22px;font-size:14px;">Send Request by Email Instead</button>
-            <p style="margin:10px 0 0;font-size:12px;color:#666;">This opens your email app with the request details filled in. You must press Send in your email app. SMS confirmations are not active.</p>
+            <p style="margin:10px 0 0;font-size:12px;color:#666;">This opens your email app with the request details filled in. You must press Send in your email app.</p>
           </div>
 
 
@@ -211,7 +204,6 @@
       "Movie suggestion: " + (data.get("movieSuggestion") || ""),
       "Notes: " + (data.get("notes") || ""),
       "Food acknowledgement: " + (data.get("foodAcknowledgement") || ""),
-      "Optional SMS confirmation consent: " + (data.get("smsConfirmationConsent") || "Not given"),
       "",
       "Submitting this request does not guarantee a reservation or approval."
     ].join("\n");

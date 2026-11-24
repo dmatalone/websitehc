@@ -1481,3 +1481,36 @@ button:focus-visible {
 }
 
 
+
+/* Keep the Summer 2027 year inside the date badge on every screen size. */
+.throwback-date-badge {
+  width: 148px;
+  min-width: 148px;
+  min-height: 124px;
+  padding: 16px 10px;
+  overflow: hidden;
+  text-align: center;
+}
+.throwback-date-badge span {
+  display: block;
+  font-size: .75rem;
+  letter-spacing: .12em;
+  line-height: 1.3;
+}
+.throwback-date-badge strong {
+  display: block;
+  font-size: clamp(2rem, 3vw, 2.4rem);
+  line-height: 1.1;
+  letter-spacing: -.045em;
+  white-space: nowrap;
+}
+@media (max-width: 480px) {
+  .throwback-date-badge {
+    width: 140px;
+    min-width: 140px;
+    min-height: 112px;
+  }
+  .throwback-date-badge strong {
+    font-size: 2.15rem;
+  }
+}

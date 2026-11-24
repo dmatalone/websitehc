@@ -201,7 +201,10 @@
     status.style.color = "#555";
     status.textContent = "Sending your request…";
     const controller = new AbortController();
-    const timeout = setTimeout(() => controller.abort(), 20000);
+    const delayedNotice = setTimeout(() => {
+      status.textContent = "FormSubmit is responding slowly. Please don't submit again while this request is processing…";
+    }, 4000);
+    const timeout = setTimeout(() => controller.abort(), 12000);
     try {
       const data = Object.fromEntries(new FormData(form).entries());
       const response = await fetch("https://formsubmit.co/ajax/hollywood.cinema.st.charles@gmail.com", {
@@ -220,10 +223,11 @@
     } catch (error) {
       status.style.color = "#a12d2d";
       status.textContent = error.name === "AbortError"
-        ? "The submission is taking too long. Please check with Hollywood Cinema before submitting again to avoid duplicates."
+        ? "FormSubmit did not respond within 12 seconds. Your request might still have arrived. Please check with Hollywood Cinema before trying again to avoid a duplicate."
         : "We couldn't confirm that your request was submitted. Please try again later or contact Hollywood Cinema directly.";
     } finally {
       clearTimeout(timeout);
+      clearTimeout(delayedNotice);
       button.disabled = false;
       button.textContent = "Submit Form";
       status.scrollIntoView({ behavior: "smooth", block: "nearest" });

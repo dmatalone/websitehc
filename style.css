@@ -1514,3 +1514,48 @@ button:focus-visible {
     font-size: 2.15rem;
   }
 }
+
+/* Mobile navigation repair: independent full-height overlay, not constrained by sticky header */
+@media (max-width: 1000px) {
+  body > nav.mobile {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    max-height: none;
+    z-index: 9999;
+    box-sizing: border-box;
+    background: #fff;
+    color: #111;
+    padding: 16px max(20px, env(safe-area-inset-right)) calc(25px + env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left));
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body > nav.mobile.open {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  body > nav.mobile a {
+    display: block;
+    flex: 0 0 auto;
+    width: 100%;
+    padding: 14px 6px;
+    color: #111;
+    background: #fff;
+    border-bottom: 1px solid #e9e9e9;
+    font-size: 17px;
+    font-weight: 700;
+    line-height: 1.35;
+  }
+}
+@media (min-width: 1001px) {
+  body > nav.mobile { display: none !important; }
+}

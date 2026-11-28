@@ -1,6 +1,6 @@
 const SITE_BANNER = {
   enabled: true,
-  message: "Reduced hours today, Saturday, November 28: Open 10:00 AM–2:30 PM CST. See you at the movies!",
+  message: "Reduced hours today, Saturday, November 28: Open 10:00 AM–2:30 PM CST.",
   linkText: "",
   link: "#"
 };

@@ -1,6 +1,6 @@
 const SITE_BANNER = {
   enabled: true,
-  message: "Thanksgiving Week Hours (Nov. 23–28): Closed Monday–Friday, November 23–27. Open Saturday, November 28, 10:00 AM–2:30 PM (reduced hours). Happy Thanksgiving!",
+  message: "Reduced hours today, Saturday, November 28: Open 10:00 AM–2:30 PM CST. See you at the movies!",
   linkText: "",
   link: "#"
 };
@@ -150,6 +150,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     updatedText.textContent =
-      "Site last updated: Tuesday, November 24th at 3:45 PM CST.";
+      "Site last updated: Saturday, November 28th at 9:25 AM CST.";
   }
 });

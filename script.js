@@ -32,22 +32,48 @@ window.addEventListener("DOMContentLoaded", () => {
   const mobile = document.querySelector(".mobile");
 
   if (menuBtn && mobile) {
-    menuBtn.onclick = () => {
-      const open = mobile.classList.toggle("open");
+    // Place the mobile panel outside the sticky, backdrop-filtered header.
+    // Mobile Safari otherwise treats fixed children as header-sized panels.
+    document.body.appendChild(mobile);
+    if (!mobile.id) mobile.id = "hollywood-mobile-nav";
+    menuBtn.setAttribute("aria-controls", mobile.id);
 
+    const positionMobileMenu = () => {
+      const header = document.querySelector(".header");
+      if (header) {
+        const bottom = Math.max(0, Math.min(window.innerHeight, header.getBoundingClientRect().bottom));
+        mobile.style.top = bottom + "px";
+      }
+    };
+    const setMobileMenu = (open) => {
+      positionMobileMenu();
+      mobile.classList.toggle("open", open);
       document.body.classList.toggle("menu-open", open);
       menuBtn.textContent = open ? "×" : "☰";
       menuBtn.setAttribute("aria-expanded", String(open));
+      menuBtn.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+      mobile.setAttribute("aria-hidden", String(!open));
+      if (open) mobile.scrollTop = 0;
     };
 
+    mobile.setAttribute("aria-hidden", "true");
+    menuBtn.addEventListener("click", () => setMobileMenu(!mobile.classList.contains("open")));
     mobile.querySelectorAll("a").forEach((link) => {
-      link.onclick = () => {
-        mobile.classList.remove("open");
-        document.body.classList.remove("menu-open");
-        menuBtn.textContent = "☰";
-        menuBtn.setAttribute("aria-expanded", "false");
-      };
+      link.addEventListener("click", () => setMobileMenu(false));
     });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && mobile.classList.contains("open")) {
+        setMobileMenu(false);
+        menuBtn.focus();
+      }
+    });
+    window.addEventListener("resize", () => {
+      positionMobileMenu();
+      if (window.innerWidth > 1000 && mobile.classList.contains("open")) setMobileMenu(false);
+    });
+    window.addEventListener("scroll", () => {
+      if (mobile.classList.contains("open")) positionMobileMenu();
+    }, { passive: true });
   }
 
   document.querySelectorAll("[data-year]").forEach((element) => {
@@ -150,6 +176,6 @@ window.addEventListener("DOMContentLoaded", () => {
     }
 
     updatedText.textContent =
-      "Site last updated: Saturday, November 28th around 9:25 AM CST.";
+      "Site last updated: Saturday, November 28th around 9:30 AM CST.";
   }
 });
